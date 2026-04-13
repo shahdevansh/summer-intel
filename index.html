@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Summer Role Intel — Devansh Shah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e6e6e6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid #1f1f1f;
+            margin-bottom: 40px;
+        }
+        
+        .title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .last-updated {
+            font-size: 0.9rem;
+            color: #666;
+            background: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding-bottom: 60px;
+        }
+        
+        .main-content {
+            background: linear-gradient(145deg, #111111, #0f0f0f);
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #1f1f1f;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .daily-briefs {
+            background: #0f0f0f;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #1a1a1a;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .daily-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .daily-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #e6e6e6;
+            border: 1px solid #2a2a2a;
+            transition: all 0.2s ease;
+        }
+        
+        .daily-link:hover {
+            background: #222;
+            border-color: #444;
+            transform: translateY(-1px);
+        }
+        
+        .daily-link-icon {
+            font-size: 1.2rem;
+        }
+        
+        .daily-link-text {
+            font-weight: 500;
+        }
+        
+        .daily-link-date {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Markdown Content Styling */
+        .markdown-content h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #2a2a2a;
+        }
+        
+        .markdown-content h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 32px 0 16px;
+        }
+        
+        .markdown-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e6e6e6;
+            margin: 24px 0 12px;
+        }
+        
+        .markdown-content p {
+            margin-bottom: 16px;
+            color: #ccc;
+        }
+        
+        .markdown-content ul, .markdown-content ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        
+        .markdown-content li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+        
+        .markdown-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .markdown-content code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            color: #4ecdc4;
+            font-size: 0.9em;
+        }
+        
+        .markdown-content blockquote {
+            border-left: 3px solid #4ecdc4;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .markdown-content hr {
+            border: none;
+            border-top: 1px solid #2a2a2a;
+            margin: 32px 0;
+        }
+        
+        /* Priority Indicators */
+        .markdown-content:contains('🔴') {
+            --priority-color: #ff6b6b;
+        }
+        
+        .markdown-content:contains('🟡') {
+            --priority-color: #ffd93d;
+        }
+        
+        .markdown-content:contains('⚪') {
+            --priority-color: #e6e6e6;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 40px;
+            }
+            
+            .header {
+                padding: 80px 0 60px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .main-content {
+                padding: 24px;
+            }
+            
+            .daily-briefs {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 40px 0 30px;
+            }
+        }
+        
+        /* Auto-refresh indicator */
+        .refresh-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 12px;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #4ecdc4;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .refresh-indicator.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🎯 Summer Role Intel — Devansh Shah</h1>
+            <p class="subtitle">Nightly research across 10 AI categories | Opus 4.6 powered</p>
+            <div class="last-updated" id="lastUpdated">
+                Last updated: <span id="updateTime">Loading...</span>
+            </div>
+        </header>
+        
+        <div class="content-grid">
+            <main class="main-content">
+                <div class="markdown-content" id="masterBrief">
+                    <!-- MASTER-BRIEF.md content will be injected here -->
+                </div>
+            </main>
+            
+            <aside class="daily-briefs">
+                <h2 class="section-title">📅 Daily Research Briefs</h2>
+                <div class="daily-links" id="dailyLinks">
+                    <!-- Daily brief links will be injected here -->
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+    <div class="refresh-indicator" id="refreshIndicator">
+        Content refreshed ✓
+    </div>
+    
+    <script>
+        // Content injection will happen here during build
+        const MASTER_BRIEF_CONTENT = `# MASTER BRIEF — Summer 2026 Role Opportunities\n\n*Cumulative tracking of top opportunities for Devansh (MBA PM + 8 years Indeed + AI/ML background)*\n\n**Last Updated:** March 20, 2026  \n**Total Opportunities Tracked:** 10  \n**Research Days:** 1\n\n---\n\n## 🏆 TOP TIER OPPORTUNITIES\n\n### 🥇 Sierra AI — Customer AI Agents\n- **Contact:** Bret Taylor (CEO, ex-Salesforce CEO)\n- **Why Perfect:** Enterprise AI agents (Sarvam experience) + B2B PM (Indeed experience)  \n- **Role:** PM for enterprise agent platform\n- **Outreach Path:** Berkeley network → Bret Taylor connections\n- **Status:** 🔴 HIGH PRIORITY - Summer programs filling fast\n- **Intel:** Founded by Bret Taylor, customer AI agents exploding in market\n- **Added:** March 20, 2026\n\n### 🥇 Glean — Enterprise AI Search  \n- **Contact:** Deedy Das (founding team, ex-Google)\n- **Why Perfect:** Search/matching from Indeed + enterprise AI + direct connection via Menlo\n- **Role:** Growth PM for AI search platform  \n- **Outreach Path:** Warm intro via Deedy Das/Menlo Ventures\n- **Status:** 🔴 HIGH PRIORITY - \$7.2B valuation, unicorn momentum\n- **Intel:** Deedy Das connection via Anthology Fund, enterprise AI search leader\n- **Added:** March 20, 2026\n\n### 🥇 Cursor — AI Code Editor\n- **Contact:** TBD (research needed)\n- **Why Perfect:** Developer tools + AI coding, technical CS background match\n- **Role:** PM for developer tools\n- **Outreach Path:** Developer community, Product Hunt network\n- **Status:** 🟡 MEDIUM PRIORITY - High growth but smaller team\n- **Intel:** Fastest growing AI coding tool\n- **Added:** March 20, 2026\n\n---\n\n## 🥈 STRONG TIER OPPORTUNITIES\n\n### Anthropic — Claude/AI Safety\n- **Contact:** TBD (AI safety community)\n- **Why Strong:** Safety-first AI + Berkeley AI Risk club connection\n- **Role:** Product strategy for Claude enterprise\n- **Status:** 🟡 MEDIUM - Selective but mission-driven fit\n- **Added:** March 20, 2026\n\n### Perplexity — AI Search  \n- **Contact:** TBD (AI Twitter community)\n- **Why Strong:** Search expertise from Indeed + consumer AI growth\n- **Role:** Consumer growth PM\n- **Status:** 🟡 MEDIUM - Rapid growth phase\n- **Added:** March 20, 2026\n\n### Replit — AI Dev Platform\n- **Contact:** TBD (developer community)\n- **Why Strong:** Developer tools + AI coding combo\n- **Role:** PM for AI coding features\n- **Status:** 🟡 MEDIUM - Developer-first culture\n- **Added:** March 20, 2026\n\n---\n\n## 🥉 GOOD TIER OPPORTUNITIES\n\n### Modal — Serverless GPU Infrastructure\n- **Contact:** TBD (ML infrastructure community)\n- **Role:** PM for AI infrastructure products\n- **Status:** 🟢 LOW-MED - Infrastructure longer cycle\n- **Added:** March 20, 2026\n\n### ElevenLabs — Voice AI\n- **Contact:** TBD (voice AI community)\n- **Role:** Product growth for voice API platform  \n- **Status:** 🟡 MEDIUM - Consumer AI momentum\n- **Added:** March 20, 2026\n\n### Harvey — Legal AI\n- **Contact:** TBD (legal tech network)\n- **Role:** Enterprise PM for legal AI\n- **Status:** 🟢 LOW-MED - Legal moves slowly but big opportunity\n- **Added:** March 20, 2026\n\n### Dust — AI Agents for Teams\n- **Contact:** TBD (productivity tool community)\n- **Role:** PM for team productivity AI\n- **Status:** 🟡 MEDIUM - Team AI trend growing\n- **Added:** March 20, 2026\n\n---\n\n## 🎯 PATTERN ANALYSIS\n\n**Strongest Fit Categories:**\n1. **Enterprise AI Platforms** — agents, search, dev tools (Indeed experience + AI background = killer combo)\n2. **Network Leverage** — Glean (Deedy), Sierra (Berkeley), Anthropic (safety community)\n3. **Technical PM Roles** — where CS degree + PM experience both matter\n\n**Research Priorities:**\n- Contact mapping for top 3 (Sierra, Glean, Cursor)\n- Summer program timelines and application deadlines  \n- Hiring manager identification\n- Warm intro paths via Berkeley/Haas network\n\n**Missing Companies to Research:**\n- Mistral AI, xAI, Character.AI, Runway, Adept AI, Factory, Recursion, others from target list\n\n---\n\n## 📊 ACTIVITY LOG\n\n**March 20, 2026**\n- Initialized MASTER-BRIEF.md with top 10 opportunities\n- Ranked by Devansh fit strength (MBA PM + Indeed + AI/ML)\n- Identified network connection opportunities (Deedy Das, Bret Taylor)\n- No new research files generated today\n\n---\n\n*This is a living document. Update daily with new intel, contacts, and opportunities.*`;
+        const DAILY_BRIEFS = [
+            {"name":"Daily Brief","path":"../daily-brief-2026-03-20.md","date":"Mar 20, 2026"}
+        ];
+        const LAST_UPDATED = `March 20, 2026 at 08:04 PM UTC`;
+        
+        // Render master brief
+        document.getElementById('masterBrief').innerHTML = marked.parse(MASTER_BRIEF_CONTENT);
+        
+        // Render daily briefs
+        const dailyLinksContainer = document.getElementById('dailyLinks');
+        DAILY_BRIEFS.forEach(brief => {
+            const link = document.createElement('a');
+            link.href = brief.path;
+            link.className = 'daily-link';
+            link.innerHTML = `
+                <span class="daily-link-icon">📊</span>
+                <span class="daily-link-text">${brief.name}</span>
+                <span class="daily-link-date">${brief.date}</span>
+            `;
+            dailyLinksContainer.appendChild(link);
+        });
+        
+        // Update timestamp
+        document.getElementById('updateTime').textContent = LAST_UPDATED;
+        
+        // Auto-refresh functionality (every 5 minutes)
+        let lastRefresh = Date.now();
+        setInterval(() => {
+            fetch(window.location.href + '?t=' + Date.now())
+                .then(response => response.text())
+                .then(html => {
+                    // Simple content change detection
+                    const parser = new DOMParser();
+                    const newDoc = parser.parseFromString(html, 'text/html');
+                    const newContent = newDoc.getElementById('masterBrief').innerHTML;
+                    const currentContent = document.getElementById('masterBrief').innerHTML;
+                    
+                    if (newContent !== currentContent) {
+                        // Content has changed, reload
+                        const indicator = document.getElementById('refreshIndicator');
+                        indicator.classList.add('show');
+                        setTimeout(() => indicator.classList.remove('show'), 3000);
+                        location.reload();
+                    }
+                })
+                .catch(err => console.log('Refresh check failed:', err));
+        }, 300000); // 5 minutes
+        
+        // Mobile touch improvements
+        document.querySelectorAll('.daily-link').forEach(link => {
+            link.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            link.addEventListener('touchend', function() {
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-1px)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
